@@ -24,8 +24,7 @@ jobs:
   shared_tests:
     executor: default
     steps:
-      - setup_remote_docker:
-          version: 20.10.6
+      - setup_remote_docker
       - checkout
       - prerequisites
       - run: make test_semver
