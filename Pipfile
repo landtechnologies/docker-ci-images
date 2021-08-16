@@ -4,5 +4,5 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-testinfra = "*"
 pytest = "*"
+pytest-testinfra = "*"
