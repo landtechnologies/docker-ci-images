@@ -47,19 +47,19 @@ _get_segment() {
 }
 
 patch(){
- local _version="$1"
+ local _version="$(_get_segment "$1" 1 -)"
  local patch_ver="$(_get_segment "$_version" 3)"
  echo "$(_get_segment $_version 1).$(_get_segment $_version 2).$((patch_ver + 1))"
 }
 
 minor(){
- local _version="$1"
+ local _version="$(_get_segment "$1" 1 -)"
  local minor_ver="$(_get_segment "$_version" 2)"
  echo "$(_get_segment $_version 1).$((minor_ver + 1)).$(_get_segment $_version 3)"
 }
 
 major(){
- local _version="$1"
+ local _version="$(_get_segment "$1" 1 -)"
  local major_ver="$(_get_segment "$_version" 1)"
  echo "$((major_ver + 1)).$(_get_segment $_version 2).$(_get_segment $_version 3)"
 }
@@ -119,8 +119,6 @@ while (( "$#" )); do
       ;; 
   esac
 done
-
-# >&2 echo "$inc_type"
 
 _validate_file "$version_file"
 

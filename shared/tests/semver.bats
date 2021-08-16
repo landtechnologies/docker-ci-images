@@ -34,6 +34,15 @@
   rm version
 }
 
+@test "it drops beta-version on patch increment" {
+  echo "1.2.3-beta.1" > version
+  run ./semver.sh patch version
+  echo "$output"
+  [ "$status" -eq 0 ]
+  [ "$output" = "1.2.4" ]
+  rm version
+}
+
 @test "it increments minor version" {
   echo "1.2.3" > version
   run ./semver.sh minor version
@@ -43,8 +52,26 @@
   rm version
 }
 
+@test "it drops beta-version on minor increment" {
+  echo "1.2.3-beta.1" > version
+  run ./semver.sh minor version
+  echo "$output"
+  [ "$status" -eq 0 ]
+  [ "$output" = "1.3.3" ]
+  rm version
+}
+
 @test "it increments major version" {
   echo "1.2.3" > version
+  run ./semver.sh major version
+  echo "$output"
+  [ "$status" -eq 0 ]
+  [ "$output" = "2.2.3" ]
+  rm version
+}
+
+@test "it drops beta-version on major increment" {
+  echo "1.2.3-beta.1" > version
   run ./semver.sh major version
   echo "$output"
   [ "$status" -eq 0 ]
