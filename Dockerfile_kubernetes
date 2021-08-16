@@ -22,7 +22,7 @@ RUN apk add wget \
 FROM alpine:3.13.2 as argo
 ARG ARGO_VERSION
 RUN apk add wget \
-  && wget -q https://github.com/argoproj/argo/releases/download/${ARGO_VERSION}/argo-linux-amd64.gz -O - | gunzip -dc - > /usr/local/bin/argo \
+  && wget -q https://github.com/argoproj/argo-workflows/releases/download/${ARGO_VERSION}/argo-linux-amd64.gz -O - | gunzip -dc - > /usr/local/bin/argo \
   && chmod +x /usr/local/bin/argo
 
 FROM alpine:3.13.2 as render
