@@ -5,12 +5,13 @@ import testinfra
 
 @pytest.fixture(scope="session")
 def host(request):
+    image = "landtech/ci-base"
     subprocess.check_call(
-        ["docker", "build", "-t", "landtech/ci-base", "-f", "Dockerfile_base", "."]
+        ["docker", "build", "-t", image, "-f", "Dockerfile_base", "."]
     )
     container = (
         subprocess.check_output(
-            ["docker", "run", "--rm", "--detach", "--tty", "landtech/ci-base"]
+            ["docker", "run", "--rm", "--detach", "--tty", image]
         )
         .decode()
         .strip()

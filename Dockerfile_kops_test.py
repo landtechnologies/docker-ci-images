@@ -10,13 +10,14 @@ with open("version.json") as file:
 
 @pytest.fixture(scope="session")
 def host(request):
+    image = "landtech/ci-kops"
     subprocess.check_call(
         [
             "docker",
             "build",
             "--build-arg=VERSION=" + version,
             "-t",
-            "landtech/ci-kops",
+            image,
             "-f",
             "Dockerfile_kops",
             ".",
@@ -24,7 +25,7 @@ def host(request):
     )
     container = (
         subprocess.check_output(
-            ["docker", "run", "--rm", "--detach", "--tty", "landtech/ci-kops"]
+            ["docker", "run", "--rm", "--detach", "--tty", image]
         )
         .decode()
         .strip()
