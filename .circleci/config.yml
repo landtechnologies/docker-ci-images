@@ -68,6 +68,19 @@ jobs:
       - prerequisites
       - run: ./Dockerfile_node.sh "$CIRCLE_BRANCH"
 
+  legacy_node:    
+    parameters:
+      node_version:
+        type: string
+    executor: default
+    steps:
+      - setup_remote_docker
+      - checkout
+      - prerequisites
+      - run: sed "1cFROM node:<< parameters.node_version >>-alpine" Dockerfile_node > "Dockerfile_node_<< parameters.node_version >>"
+      - run: docker build -t "landtech/ci-node:<< parameters.node_version >>" -f "Dockerfile_node_<< parameters.node_version >>" .
+      - run: docker push "landtech/ci-node:<< parameters.node_version >>"  
+          
   kubernetes:
     executor: default
     steps:
@@ -96,6 +109,29 @@ workflow_jobs: &workflow_jobs
         requires:
           - shared_tests
 
+    - legacy_node:
+        name: legacy_node_v10
+        node_version: "10"
+        context: DockerHub
+        requires:
+          - node
+        filters:
+          branches:
+            only:
+              - master
+    
+    # Is this needed? No references in github.
+    - legacy_node:
+        name: legacy_node_v12
+        node_version: "12"
+        context: DockerHub
+        requires:
+          - node
+        filters:
+          branches:
+            only:
+              - master
+    
     - kubernetes:
         context: DockerHub
         requires:
