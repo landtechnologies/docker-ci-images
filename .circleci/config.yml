@@ -120,18 +120,6 @@ workflow_jobs: &workflow_jobs
             only:
               - master
     
-    # Is this needed? No references in github.
-    - legacy_node:
-        name: legacy_node_v12
-        node_version: "12"
-        context: DockerHub
-        requires:
-          - node
-        filters:
-          branches:
-            only:
-              - master
-    
     - kubernetes:
         context: DockerHub
         requires:
