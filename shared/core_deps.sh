@@ -37,16 +37,19 @@ apk add --no-cache \
   zip \
   util-linux
 
+# pip
+pip3 install --upgrade --no-cache-dir \
+  pip \
+  pipenv
+
 # aws cli
 pip3 install --upgrade --no-cache-dir \
   awscli
 mkdir -p /root/.aws/cli
 curl --fail -s -o /root/.aws/cli/alias https://raw.githubusercontent.com/landtechnologies/reformation/master/assets/aws-alias
 
-# pip
+# Misc tooling 
 pip3 install --upgrade --no-cache-dir \
-  pip \
-  pipenv \
   credstash \
   docker-compose \
   yq
