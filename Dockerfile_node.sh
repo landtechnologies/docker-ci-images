@@ -16,7 +16,6 @@ if [ "$branch" == "master" ]; then
     for version in "${versions[@]}"; do
         sed "1cFROM node:$version-alpine" Dockerfile_node >"Dockerfile_node_$version"
         docker build -t "landtech/ci-node:$version" \
-            --build-arg CRYPTOGRAPHY_DONT_BUILD_RUST=1 \
             -f "Dockerfile_node_$version" .
         docker push "landtech/ci-node:$version"
     done
