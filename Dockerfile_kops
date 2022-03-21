@@ -7,9 +7,9 @@ RUN apk add curl \
 
 FROM golang:alpine as golang
 RUN apk add git \
-  && go install github.com/google/go-jsonnet/cmd/jsonnet \
-  && go install github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb \
-  && go install github.com/brancz/gojsontoyaml
+  && go install github.com/google/go-jsonnet/cmd/jsonnet@latest \
+  && go install github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb@latest \
+  && go install github.com/brancz/gojsontoyaml@latest
 
 FROM landtech/ci-kubernetes:latest
 COPY --from=kops /usr/local/bin/kops /usr/local/bin
