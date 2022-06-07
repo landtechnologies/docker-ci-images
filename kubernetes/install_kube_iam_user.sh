@@ -59,6 +59,14 @@ if [ -n "$aws_profile" ]; then
   "
 fi
 
+aws_account_id=$(aws account-id)
+
+if [ -z "$aws_account_id" ]; then
+  echo "Could not find valid AWS account ID for the provided profile (profile: \"$AWS_PROFILE\"). Please try again using valid AWS profile."
+  exit 1
+fi
+
+
 temp_user="$(mktemp)"
 temp_config="$(mktemp)"
 
@@ -73,7 +81,7 @@ users:
       - -i
       - $cluster
       - -r
-      - arn:aws:iam::$(aws account-id):role/$role
+      - arn:aws:iam::${aws_account_id}:role/$role
       command: aws-iam-authenticator
       env: $aws_profile_env" >"$temp_user"
 
