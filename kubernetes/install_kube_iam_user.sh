@@ -59,7 +59,7 @@ if [ -n "$aws_profile" ]; then
   "
 fi
 
-aws_account_id=$(aws account-id)
+aws_account_id="$(aws sts get-caller-identity --output text --query 'Account')"
 
 if [ -z "$aws_account_id" ]; then
   echo "Could not find valid AWS account ID for the provided profile (profile: \"$AWS_PROFILE\"). Please try again using valid AWS profile."
