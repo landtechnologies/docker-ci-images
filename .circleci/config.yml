@@ -3,7 +3,7 @@ version: 2.1
 executors:
   default:
     docker:
-      - image: python:3-alpine3.13 # Version pinned due to alpine/make issue: https://gitlab.alpinelinux.org/alpine/aports/-/issues/12396
+      - image: python:3-alpine
 
 commands:
   prerequisites:
