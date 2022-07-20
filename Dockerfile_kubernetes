@@ -56,8 +56,8 @@ RUN helm repo update
 RUN apk update \
   && apk add --no-cache openssh \
   # kubectl aliases
-  && curl --fail -s -o /usr/local/bin/k8_cluster_domain https://raw.githubusercontent.com/landtechnologies/reformation/master/assets/bin/k8_cluster_domain \
+  && echo 'k8_cluster_name | sed -e "s/^[a-zA-Z0-9\-_]*\.//"' > /usr/local/bin/k8_cluster_domain \
   && chmod +x /usr/local/bin/k8_cluster_domain \
-  && curl --fail -s -o /usr/local/bin/k8_cluster_name https://raw.githubusercontent.com/landtechnologies/reformation/master/assets/bin/k8_cluster_name \
+  && echo 'kubectl config view -o json | jq -r ".contexts[] | select(.name == \"$(kubectl config current-context)\") | .context.cluster"' > /usr/local/bin/k8_cluster_name \
   && chmod +x /usr/local/bin/k8_cluster_name
 

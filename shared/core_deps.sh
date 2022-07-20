@@ -46,7 +46,7 @@ pip3 install --upgrade --no-cache-dir \
 pip3 install --upgrade --no-cache-dir \
   awscli
 mkdir -p /root/.aws/cli
-curl --fail -s -o /root/.aws/cli/alias https://raw.githubusercontent.com/landtechnologies/reformation/master/assets/aws-alias
+ curl --fail -s -o /root/.aws/cli/alias https://raw.githubusercontent.com/landtechnologies/aws-toolbox/master/assets/aws-alias
 
 # Misc tooling 
 pip3 install --upgrade --no-cache-dir \
