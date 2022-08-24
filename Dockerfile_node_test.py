@@ -62,7 +62,7 @@ def test_bats(host):
 
 
 def test_pip_packages(host):
-    packages = host.pip_package.get_packages()
+    packages = host.pip.get_packages()
     assert "awscli" in packages
     assert "credstash" in packages
     assert "docker-compose" in packages
