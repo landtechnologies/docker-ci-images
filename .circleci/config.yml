@@ -25,7 +25,7 @@ jobs:
     executor: default
     steps:
       - setup_remote_docker:
-          version: 20.10.14
+          version: 20.10.11
       - checkout
       - prerequisites
       - run: make test_semver
@@ -34,7 +34,7 @@ jobs:
     executor: default
     steps:
       - setup_remote_docker:
-          version: 20.10.14
+          version: 20.10.11
       - checkout
       - prerequisites
       - run: |
@@ -50,7 +50,7 @@ jobs:
     executor: default
     steps:
       - setup_remote_docker:
-          version: 20.10.14
+          version: 20.10.11
       - checkout
       - prerequisites
       - run: |
@@ -67,7 +67,7 @@ jobs:
     executor: default
     steps:
       - setup_remote_docker:
-          version: 20.10.14
+          version: 20.10.11
       - checkout
       - prerequisites
       - run: ./Dockerfile_node.sh "$CIRCLE_BRANCH"
@@ -79,7 +79,7 @@ jobs:
     executor: default
     steps:
       - setup_remote_docker:
-        version: 20.10.14
+          version: 20.10.11
       - checkout
       - prerequisites
       - run: sed "1cFROM node:<< parameters.node_version >>-alpine" Dockerfile_node > "Dockerfile_node_<< parameters.node_version >>"
@@ -90,7 +90,7 @@ jobs:
     executor: default
     steps:
       - setup_remote_docker:
-          version: 20.10.14
+          version: 20.10.11
       - checkout
       - prerequisites
       - run: |
