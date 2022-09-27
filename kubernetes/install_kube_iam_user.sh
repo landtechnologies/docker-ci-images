@@ -10,10 +10,13 @@
 #   Otherwise uses the current profile
 # --role <role> - OPTIONAL
 #   The role to assume on AWS. Defaults to 'k8-admin' if not provided
+# --client-authentication-api-version <client_authentication_api_version> - OPTIONAL
+#   The api version to set for client.authentication.k8s.io. Defaults to 'v1alpha1' if not provided
 
 set -eo pipefail
 
 role="k8-admin" # default but will be deprecated once cluster roles are set up
+client_authentication_api_version="v1alpha1"
 aws_profile_env=null
 
 for var in "$@"; do
@@ -26,6 +29,9 @@ for var in "$@"; do
     ;;
   --role)
     role="$2"
+    ;;
+  --client-authentication-api-version)
+    client_authentication_api_version="$2"
     ;;
   esac
   shift
@@ -75,7 +81,7 @@ users:
 - name: $cluster.iam
   user:
     exec:
-      apiVersion: client.authentication.k8s.io/v1alpha1
+      apiVersion: client.authentication.k8s.io/$client_authentication_api_version
       args:
       - token
       - -i
