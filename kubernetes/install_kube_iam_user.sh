@@ -30,7 +30,7 @@ for var in "$@"; do
   --role)
     role="$2"
     ;;
-  --client_authentication_api_version)
+  --client-authentication-api-version)
     client_authentication_api_version="$2"
     ;;
   esac
