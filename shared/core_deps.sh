@@ -20,22 +20,24 @@ apk add --no-cache \
   coreutils \
   curl \
   docker \
+  docker-compose \
   git \
   grep \
   jq \
   libressl \
   lsof \
   make \
-  netcat-openbsd \
   ncurses \
+  netcat-openbsd \
   openssh-client \
-  python3 \
   py3-pip \
+  python3 \
   rsync \
   tar \
+  util-linux \
   wget \
-  zip \
-  util-linux
+  yq \
+  zip 
 
 # pip
 pip3 install --upgrade --no-cache-dir \
@@ -46,13 +48,11 @@ pip3 install --upgrade --no-cache-dir \
 pip3 install --upgrade --no-cache-dir \
   awscli
 mkdir -p /root/.aws/cli
- curl --fail -s -o /root/.aws/cli/alias https://raw.githubusercontent.com/landtechnologies/aws-toolbox/master/assets/aws-alias
+curl --fail -s -o /root/.aws/cli/alias https://raw.githubusercontent.com/landtechnologies/aws-toolbox/master/assets/aws-alias
 
 # Misc tooling 
 pip3 install --upgrade --no-cache-dir \
-  credstash \
-  docker-compose \
-  yq
+  credstash 
 
 # bats-core
 git clone https://github.com/bats-core/bats-core.git
