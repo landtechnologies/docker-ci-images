@@ -28,6 +28,7 @@ def host(request):
         ("coreutils"),
         ("curl"),
         ("docker"),
+        ("docker-compose"),
         ("grep"),
         ("jq"),
         ("lsof"),
@@ -40,6 +41,7 @@ def host(request):
         ("util-linux"),
         ("wget"),
         ("yarn"),
+        ("yq"),
         ("zip"),
     ],
 )
@@ -65,9 +67,7 @@ def test_pip_packages(host):
     packages = host.pip.get_packages()
     assert "awscli" in packages
     assert "credstash" in packages
-    assert "docker-compose" in packages
     assert "pipenv" in packages
-    assert "yq" in packages
 
 
 def test_pipenv_works(host):
