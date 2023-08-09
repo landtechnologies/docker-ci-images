@@ -41,7 +41,6 @@ def host(request):
         ("util-linux"),
         ("wget"),
         ("yarn"),
-        ("yq"),
         ("zip"),
     ],
 )
@@ -68,6 +67,7 @@ def test_pip_packages(host):
     assert "awscli" in packages
     assert "credstash" in packages
     assert "pipenv" in packages
+    assert "yq" in packages
 
 
 def test_pipenv_works(host):

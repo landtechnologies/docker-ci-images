@@ -36,7 +36,6 @@ apk add --no-cache \
   tar \
   util-linux \
   wget \
-  yq \
   zip 
 
 # pip
@@ -50,9 +49,15 @@ pip3 install --upgrade --no-cache-dir \
 mkdir -p /root/.aws/cli
 curl --fail -s -o /root/.aws/cli/alias https://raw.githubusercontent.com/landtechnologies/aws-toolbox/master/assets/aws-alias
 
+# #awscli2
+# curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+# unzip awscliv2.zip
+# ./aws/install
+
 # Misc tooling 
 pip3 install --upgrade --no-cache-dir \
-  credstash 
+  credstash \
+  yq
 
 # bats-core
 git clone https://github.com/bats-core/bats-core.git
