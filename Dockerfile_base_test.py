@@ -28,17 +28,18 @@ def host(request):
         ("bash"),
         ("coreutils"),
         ("curl"),
+        ("docker-compose"),
         ("grep"),
         ("jq"),
         ("lsof"),
         ("make"),
-        ("netcat-openbsd"),
         ("ncurses"),
+        ("netcat-openbsd"),
         ("rsync"),
         ("tar"),
+        ("util-linux"),
         ("wget"),
         ("zip"),
-        ("util-linux"),
     ],
 )
 def test_installed_dependencies(host, package):
@@ -63,7 +64,6 @@ def test_pip_packages(host):
     packages = host.pip.get_packages()
     assert "awscli" in packages
     assert "credstash" in packages
-    assert "docker-compose" in packages
     assert "pipenv" in packages
     assert "yq" in packages
 
