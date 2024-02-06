@@ -1,0 +1,18 @@
+name: Build docker container for apps repo github actions
+on:
+  workflow_dispatch:
+  # schedule:
+    # - cron: '40 19 * * *' # once a day at 19:40 UTC / 11:40 PST
+
+jobs:
+  build-docker-image:
+    name: Build docker image for apps repo
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_ACCESS_TOKEN: ${{ secrets.PACKAGES_READ_TOKEN }}
+    steps:
+      - name: Check out repo's default branch
+        uses: actions/checkout@v4
+      - name: Docker build
+        run: docker build -f Dockerfile.apps -e GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN -t landtech-docker-ci-apps .
+
