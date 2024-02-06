@@ -13,6 +13,7 @@ jobs:
     steps:
       - name: Check out repo's default branch
         uses: actions/checkout@v4
+      - run: df -h
       - name: Docker build
         run: docker build -f Dockerfile.apps --build-arg GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN -t landtech-docker-ci-apps .
 
