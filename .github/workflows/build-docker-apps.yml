@@ -11,6 +11,11 @@ jobs:
     env:
       GITHUB_ACCESS_TOKEN: ${{ secrets.PACKAGES_READ_TOKEN }}
     steps:
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: false
+        
       - name: Check out repo's default branch
         uses: actions/checkout@v4
       - run: df -h
