@@ -10,6 +10,6 @@ RUN corepack enable
 RUN yarn set version stable
 RUN git clone --depth 1 https://$GITHUB_ACCESS_TOKEN@github.com/landtechnologies/apps.git
 WORKDIR /apps
-# RUN NODE_OPTIONS=--max_old_space_size=8192 yarn install 
-# WORKDIR /
-# RUN rm -rf /apps
+RUN NODE_OPTIONS=--max_old_space_size=8192 yarn install 
+WORKDIR /
+RUN rm -rf /apps
